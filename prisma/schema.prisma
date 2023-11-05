@@ -10,3 +10,23 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Company {
+  companyId  String       @id @default(uuid())
+  name       String
+  Department Department[]
+}
+
+model Department {
+  departmentId String     @id @default(uuid())
+  name         String
+  companyId    String
+  company      Company    @relation(fields: [companyId], references: [companyId])
+  employees    Employee[]
+}
+
+model Employee {
+  employeeId   String     @id @default(uuid())
+  name         String
+  departmentId String
+  department   Department @relation(fields: [departmentId], references: [departmentId])
+}
