@@ -34,7 +34,7 @@ router.post('/:id', async (req, res) => {
     const company = await addCompany(companyName)
     res.send(company)
   }else {
-    res.status(400).send({msg: 'Compnay name is Required'})
+    res.status(400).send({ msg: 'Compnay name is Required' })
   }
 })
 
