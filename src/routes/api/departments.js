@@ -13,8 +13,9 @@ router.get('/:id', async (req, res) => {
   const department = await getDepartment(req.params.id)
   if (department) {
     res.send(department)
-  } else {
-    res.status(404).send({ msg: 'Department not found' })
+  } 
+  else {
+    res.status(404).send({ msg: 'Department Not Found' })
   }
 })
 
