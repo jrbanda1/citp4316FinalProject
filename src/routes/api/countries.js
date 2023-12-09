@@ -1,21 +1,21 @@
 import { Router } from 'express'
 
-import { getCompanies, getCompany, addCompany } from '../../models/companies'
-import { addDepartment } from '../../models/departments'
+import { getCountries, getCountry, addCountry } from '../../models/countries'
+import { addDepartment } from '../../models/cities'
 
 const router = Router()
 
 router.get('/', async (req, res) => {
-  const companies = await getCompanies()
-  res.send(companies)
+  const countries = await getCountries()
+  res.send(countries)
 })
 
 router.get('/:id', async (req, res) => {
-  const company = await getCompany(req.params.id)
-  if (company) {
-    res.send(company)
+  const country = await getCountry(req.params.id)
+  if (country) {
+    res.send(country)
   } else {
-    res.status(404).send({ msg: 'Company not found' })
+    res.status(404).send({ msg: 'Country not found' })
   }
 })
 
