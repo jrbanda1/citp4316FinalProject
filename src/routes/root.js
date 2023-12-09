@@ -6,7 +6,7 @@ const router = Router()
 
 router.get('/', (req, res) => {
   logger.info('Inside the root path')
-  const title = process.env.TITLE || 'Server'
+  const title = process.env.TITLE 
   res.send({ msg: title })
 })
 
