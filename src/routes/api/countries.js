@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
 import { getCountries, getCountry, addCountry } from '../../models/countries'
-import { addCity, addCountry } from '../../models/cities'
+import { addCity } from '../../models/cities'
 
 const router = Router()
 
