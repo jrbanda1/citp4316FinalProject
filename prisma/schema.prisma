@@ -19,11 +19,24 @@ model Country {
 }
 
 model City {
-  cityId        String   @id @default(uuid())
+  cityId        String       @id @default(uuid())
   name          String
   countryId     String
   travelWeather String
-  country       Country  @relation(fields: [countryId], references: [countryId])
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  country       Country      @relation(fields: [countryId], references: [countryId])
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  Attraction    Attraction[]
+}
+
+model Attraction {
+  attractionId String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  title        String
+  cityId       String
+  city         City     @relation(fields: [cityId], references: [cityId])
+  quote        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
