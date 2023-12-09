@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
 import { getCountries, getCountry, addCountry } from '../../models/countries'
-import { addDepartment } from '../../models/cities'
+import { addCity, addCountry } from '../../models/cities'
 
 const router = Router()
 
@@ -20,28 +20,28 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  const companyName = req.body.name
-  if (companyName) {
-    const company = await addCompany(companyName)
-    res.send(company)
+  const countryName = req.body.name
+  if (countryName) {
+    const country = await addCountry(countryName)
+    res.send(country)
   } else {
-    res.status(400).send({ msg: 'Company name is required' })
+    res.status(400).send({ msg: 'Country name is required' })
   }
 })
 
 router.post('/:id', async (req, res) => {
-  const companyId = req.params.id
-  const company = await getCompany(companyId)
-  if (company) {
-    const departmentName = req.body.name
-    if (departmentName) {
-      const department = await addDepartment(departmentName, companyId)
-      res.send(department)
+  const countryId = req.params.id
+  const country = await getCountry(countryId)
+  if (country) {
+    const cityName = req.body.name
+    if (cityName) {
+      const city = await addCity(cityName, countryId)
+      res.send(city)
     } else {
-      res.status(400).send({ msg: 'Department name not here' })
+      res.status(400).send({ msg: 'City name not here' })
     }
   } else {
-    res.status(400).send({ msg: 'Company does not exist' })
+    res.status(400).send({ msg: 'Country does not exist' })
   }
 })
 
