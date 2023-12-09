@@ -1,10 +1,9 @@
 {
-  "name": "server",
+  "name": "citp4316finalproject",
   "version": "1.0.0",
-  "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel ./src --out-dir ./build",
+    "build": "babel ./src --out-dir ./build",
     "postbuild": "prisma generate",
     "start": "node ./build/index.js",
     "dev": "nodemon --exec npx babel-node src/index.js",
@@ -25,7 +24,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "nodemon": "^3.0.1",
+    "nodemon": "^3.0.2",
     "prettier": "^2.7.1",
     "prisma": "^5.5.2"
   },
@@ -42,5 +41,6 @@
     "morgan": "^1.10.0",
     "node": "^21.2.0",
     "uuid": "^9.0.0"
-  }
+  },
+  "description": ""
 }
