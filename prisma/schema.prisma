@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model travelSpot {
+model Country {
   countryId String   @id @default(uuid())
   name      String
   city      City[]
