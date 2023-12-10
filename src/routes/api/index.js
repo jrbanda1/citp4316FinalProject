@@ -2,9 +2,9 @@ import { Router } from 'express'
 import basicAuth from 'express-basic-auth'
 
 import persons from './persons'
-import countries from './countries'
-import cities from './cities'
-import attractions from './attractions'
+import companies from './countries'
+import departments from './cities'
+import employees from './attractions'
 
 const router = Router()
 
@@ -19,8 +19,8 @@ router.get('/', (req, res) => {
 })
 
 router.use('/persons', persons)
-router.use('/countries', countries)
-router.use('/cities', cities)
-router.use('/attractions', attractions)
+router.use('/countries', companies)
+router.use('/cities', departments)
+router.use('/attractions', employees)
 
 export default router

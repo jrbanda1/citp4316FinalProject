@@ -6,8 +6,8 @@ export const getCompany = async (id) =>
   db.country.findUnique({
     where: { companyId: id },
     include: {
-      city: true,
+      departments: true,
     },
   })
 
-export const addCompany = async (name) => db.country.create({ data: { name } })
+export const addCompany = async (name) => db.company.create({ data: { name } })

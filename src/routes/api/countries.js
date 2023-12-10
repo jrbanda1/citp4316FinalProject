@@ -1,7 +1,7 @@
 import { Router } from 'express'
 
-import { getCompanies, getCompany, addCompany } from '../../models/countries'
-import { addDepartment } from '../../models/cities'
+import { getCompanies, getCompany, addCompany } from '../../models/companies'
+import { addDepartment } from '../../models/departments'
 
 const router = Router()
 
@@ -15,7 +15,7 @@ router.get('/:id', async (req, res) => {
   if (company) {
     res.send(company)
   } else {
-    res.status(404).send({ msg: 'Country not found' })
+    res.status(404).send({ msg: 'Company not found' })
   }
 })
 
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
     const company = await addCompany(companyName)
     res.send(company)
   } else {
-    res.status(400).send({ msg: 'Country name is required' })
+    res.status(400).send({ msg: 'Company name is required' })
   }
 })
 
@@ -38,10 +38,10 @@ router.post('/:id', async (req, res) => {
       const department = await addDepartment(departmentName, companyId)
       res.send(department)
     } else {
-      res.status(400).send({ msg: 'City name not here' })
+      res.status(400).send({ msg: 'Department name not here' })
     }
   } else {
-    res.status(400).send({ msg: 'Country does not exist' })
+    res.status(400).send({ msg: 'Company does not exist' })
   }
 })
 
