@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Country {
+model travelSpot {
   countryId String   @id @default(uuid())
   name      String
   city      City[]
@@ -24,15 +24,14 @@ model City {
   countryId     String
   travelWeather String
   country       Country      @relation(fields: [countryId], references: [countryId])
+  Attraction    Attraction[]
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
-  Attraction    Attraction[]
 }
 
 model Attraction {
   attractionId String   @id @default(uuid())
   name         String
-  email        String   @unique
   title        String
   cityId       String
   city         City     @relation(fields: [cityId], references: [cityId])
