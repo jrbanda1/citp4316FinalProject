@@ -35,7 +35,7 @@ model Attraction {
   title        String
   cityId       String
   city         City     @relation(fields: [cityId], references: [cityId])
-  quote        String?
+  quote        String
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
