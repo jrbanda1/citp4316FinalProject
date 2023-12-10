@@ -10,32 +10,32 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Country {
-  countryId String   @id @default(uuid())
-  name      String
-  city      City[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model City {
-  cityId      String       @id @default(uuid())
+model Company {
+  companyId   String       @id @default(uuid())
   name        String
-  countryId   String
-  country     Country      @relation(fields: [countryId], references: [countryId])
-  attractions Attraction[]
+  departments Department[]
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
 }
 
-model Attraction {
-  attractionId String   @id @default(uuid())
+model Department {
+  departmentId String     @id @default(uuid())
   name         String
-  email        String   @unique
+  companyId    String
+  company      Company    @relation(fields: [companyId], references: [companyId])
+  employees    Employee[]
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+}
+
+model Employee {
+  employeeId   String     @id @default(uuid())
+  name         String
+  email        String     @unique
   title        String
-  cityId       String
-  city         City     @relation(fields: [cityId], references: [cityId])
+  departmentId String
+  department   Department @relation(fields: [departmentId], references: [departmentId])
   quote        String?
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
 }
