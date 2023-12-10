@@ -1,30 +1,30 @@
 import db from '../utils/db'
 
 export const getEmployees = async (skip, take) => {
-  const count = await db.employee.count()
-  const employees = await db.employee.findMany({
+  const count = await db.attraction.count()
+  const employees = await db.attraction.findMany({
     skip ,
     take,
   })
-  return { count, employees }
+  return { count, attraction }
 }
 
 export const getEmployee = async (id) =>
-  db.employee.findUnique({ where: { employeeId: id } })
+  db.attraction.findUnique({ where: { employeeId: id } })
 
 export const addEmployee = async (employeeData) =>
-  db.employee.create({ data: { ...employeeData } })
+  db.attraction.create({ data: { ...employeeData } })
 
 export const updateEmployee = async (id, employeeData) => {
-  const employee = await getEmployee(id)
-  if (employee) {
-    return db.employee.update({
+  const attraction = await getEmployee(id)
+  if (attraction) {
+    return db.attraction.update({
       where: { employeeId: id },
-      data: { ...employee, ...employeeData, updatedAt: new Date() },
+      data: { ...attraction, ...employeeData, updatedAt: new Date() },
     })
   }
   return null
 }
 
 export const deleteEmployee = async (id) =>
-  db.employee.delete({ where: { employeeId: id } })
+  db.attraction.delete({ where: { employeeId: id } })

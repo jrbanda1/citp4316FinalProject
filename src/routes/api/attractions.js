@@ -6,7 +6,7 @@ import {
   addEmployee,
   updateEmployee,
   deleteEmployee,
-} from '../../models/employees'
+} from '../../models/attractions'
 
 const router = Router()
 

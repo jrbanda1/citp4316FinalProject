@@ -1,6 +1,6 @@
 import { Router } from 'express'
 
-import { getDepartment, getDepartments } from '../../models/departments'
+import { getDepartment, getDepartments } from '../../models/cities'
 
 const router = Router()
 
