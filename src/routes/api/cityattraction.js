@@ -6,7 +6,7 @@ import {
   addAttraction,
   updateAttraction,
   deleteAttraction,
-} from '../../models/cityattraction'
+} from '../../models/cityattractions'
 
 const router = Router()
 
@@ -15,43 +15,43 @@ router.get('/', async (req, res) => {
   const page = Number(req.query.page) || 1
   const skip = size * (page - 1)
   const take = size
-  const { count, employees } = await getEmployees(skip, take)
+  const { count, attractions } = await getAttractions(skip, take)
   res.set({
     'X-Total-Count': count,
     'X-Total-Pages': Math.ceil(count / size),
   })
-  res.send(employees)
+  res.send(attractions)
 })
 
 router.get('/:id', async (req, res) => {
-  const employee = await getEmployee(req.params.id)
-  if (employee) {
-    res.send(employee)
+  const attraction = await getAttraction(req.params.id)
+  if (attraction) {
+    res.send(attraction)
   } else {
-    res.status(404).send({ msg: 'Employee not found' })
+    res.status(404).send({ msg: 'Attraction not found' })
   }
 })
 
 router.post('/', async (req, res) => {
-  const employee = await addEmployee(req.body)
-  res.send(employee)
+  const attraction = await addAttraction(req.body)
+  res.send(attraction)
 })
 
 router.put('/:id', async (req, res) => {
-  const employee = await updateEmployee(req.params.id, req.body)
-  if (employee) {
-    res.send(employee)
+  const attraction = await updateAttraction(req.params.id, req.body)
+  if (attraction) {
+    res.send(attraction)
   } else {
-    res.status(404).send({ msg: 'Employee not found' })
+    res.status(404).send({ msg: 'Attraction not found' })
   }
 })
 
 router.delete('/:id', async (req, res) => {
-  const employee = await deleteEmployee(req.params.id)
-  if (employee) {
-    res.send(employee)
+  const attraction = await deleteAttraction(req.params.id)
+  if (attraction) {
+    res.send(attraction)
   } else {
-    res.status(404).send({ msg: 'Employee not found' })
+    res.status(404).send({ msg: 'Attraction not found' })
   }
 })
 
